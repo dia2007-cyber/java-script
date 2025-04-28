@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>experimento 1 -aula1</title>
+</head>
+<body>
+    <h1>Somando Dois Valores</h1>
+    <input type="number" name="num1" id="num1" placceholder="Digite o 1º número">
+    <span>+</span>
+    <input type="number" name="num2" id="num2" placceholder="Digite o 2º número">
+    <input type="button" value="somar" onclick="somar();">
+    <div>
+        <p>resultado: <span id="resultado"></span></p>
+    </div>
+<script type="text/javascript">
+    function somar(){
+    const num1texto = document.getElementById("num1").value;
+    const num2texto = document.getElementById("num2").value;
+    const num1 = parseInt(num1texto);
+    const num2 = parseInt(num2texto);
+    const  resultado = num1+num2
+    document.getElementById("resultado").innerText = resultado
+    }
+    </script>
+</body>
+</html>
+    

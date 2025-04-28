@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvem e Chuva</title>
+</head>
+<body>
+
+<div id="container">
+    <img id="nuvem" src="nuvenzinha.png" alt="Nuvem">
+    <img id="chuva" src="gota.gif" alt="Chuva">
+
+    <div>
+        <button onclick="mostrarChuva()">Fazer Chover</button>
+        <button onclick="esconderChuva()">Parar Chuva</button>
+    </div>
+</div>
+
+<script type="text/javascript" >
+    const container = document.getElementById('container');
+    const nuvem = document.getElementById('nuvem');
+    const chuva = document.getElementById('chuva');
+
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.alignItems = 'center';
+
+    nuvem.style.width = '150px';
+
+    chuva.style.width = '80px';
+
+    function mostrarChuva() {
+        chuva.style.display = 'block';
+    }
+
+    function esconderChuva() {
+        chuva.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
+

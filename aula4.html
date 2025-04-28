@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Aula 4,saldaçao e horário </title>
+</head>
+<body>
+    <div id="container">
+    <h1 id ="saudacao"></h1>
+    <p id ="hora"></p>
+    <p id ="diaSemana"></p>
+</div>    
+<script type="text/javascript" >
+  const body = document.body;
+  const containerElement = document.getElementById("container");
+  const saudacaoElement = document.getElementById("saudacao");
+  const horaElement = document.getElementById("hora");
+  const diaSemanaElement = document.getElementById("diaSemana");
+  const diasDaSemana = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"];
+
+  const estilos ={
+    body:{
+        frontFamily:"sans-serif",
+        display:"flex",
+        justifyContent:"center",
+        alignItens:"center",
+        minHeight:"100vh",
+        margin:"0",
+        backgroundColor:"#f0f0f0",
+        transition: "background-color 0.5s ease-in-out",
+                color: "#333"
+            },
+            container: {
+                textAlign: "center"
+            },
+            h1: {
+                fontSize: "2.5em",
+                marginBottom: "10px"
+            },
+            p: {
+                fontSize: "1.2em",
+                marginTop: "5px"
+            },
+            manha: {
+                backgroundColor: "#a7d9ed",
+                color: "#333"
+            },
+            tarde: {
+                backgroundColor: "#f5c78f",
+                color: "#555"
+            },
+            noite: {
+                backgroundColor: "#333",
+                color: "#f0f0f0"
+            },
+            madrugada: {
+                backgroundColor: "#1a1a1a",
+                color: "#ccc"
+            }
+        };
+
+        function aplicarEstilos(elemento, estilos) {
+            for (const propriedade in estilos) {
+                elemento.style[propriedade] = estilos[propriedade];
+            }
+        }
+        aplicarEstilos(body, estilos.body);
+        aplicarEstilos(containerElement, estilos.container);
+        aplicarEstilos(saudacaoElement, estilos.h1);
+        aplicarEstilos(horaElement, estilos.p);
+        aplicarEstilos(diaSemanaElement, estilos.p);
+
+        function atualizarTempo() {
+            
+            const agora = new Date();
+            const hora = agora.getHours();
+            const minutos = agora.getMinutes();
+            const segundos = agora.getSeconds();
+            const diaSemanaNumero = agora.getDay(); 
+            
+            const horaFormatada = `${hora}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+            horaElement.textContent = horaFormatada;
+            
+            const diaDaSemanaAtual = diasDaSemana[diaSemanaNumero];
+            diaSemanaElement.textContent = `Hoje é ${diaDaSemanaAtual}`;
+            
+            let saudacao;
+            let periodo;
+
+            if (hora >= 6 && hora < 12) {
+                saudacao = "Bom dia!";
+                periodo = "manha";
+            } else if (hora >= 12 && hora < 18) {
+                saudacao = "Boa tarde!";
+                periodo = "tarde";
+            } else if (hora >= 18 && hora < 24) {
+                saudacao = "Boa noite!";
+                periodo = "noite";
+            } else {
+                saudacao = "Boa madrugada!";
+                periodo = "madrugada";
+            }
+
+            saudacaoElement.textContent = saudacao;
+            aplicarEstilos(body, estilos[periodo]); 
+        }
+        
+        setInterval(atualizarTempo, 1000);
+       
+        atualizarTempo();
+    </script>
+</body>
+</html>
+                         
+
